@@ -7,3 +7,7 @@ A new Flutter project.
 Import file text_widget.dart ke main.dart
 
 ![Screenshot hello_world](images/02.png)
+
+tambahkan file logo Polinema di folder assets project hello_world.
+
+![Screenshot hello_world](images/03.png)
