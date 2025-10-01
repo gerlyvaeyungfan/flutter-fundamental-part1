@@ -19,3 +19,7 @@ Praktikum Langkah 1: Cupertino Button dan Loading Bar
 Langkah 2: Floating Action Button (FAB)
 
 ![Screenshot hello_world](images/05.png)
+
+Langkah 3: Scaffold Widget
+
+![Screenshot hello_world](images/06.png)
