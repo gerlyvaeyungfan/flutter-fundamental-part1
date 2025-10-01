@@ -23,3 +23,7 @@ Langkah 2: Floating Action Button (FAB)
 Langkah 3: Scaffold Widget
 
 ![Screenshot hello_world](images/06.png)
+
+Langkah 4: Dialog Widget
+
+![Screenshot hello_world](images/07.png)

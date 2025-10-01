@@ -9,67 +9,48 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorSchemeSeed: Colors.red,
-        useMaterial3: true, // aktifkan Material 3
-      ),
-
-      home: const MyHomePage(title: 'My Increment App'),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false, // biar lebih rapi
+      home: Scaffold(body: MyLayout()),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class MyLayout extends StatelessWidget {
+  const MyLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ElevatedButton(
+          onPressed: () {
+            showAlertDialog(context);
+          },
+          child: const Text('Show alert'),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50.0,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment Counter',
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
+}
+
+void showAlertDialog(BuildContext context) {
+  // Tombol OK
+  final okButton = TextButton(
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+    child: const Text("OK"),
+  );
+
+  // Dialog
+  final alert = AlertDialog(
+    title: const Text("My title"),
+    content: const Text("This is my message."),
+    actions: [okButton],
+  );
+
+  // Tampilkan dialog
+  showDialog(context: context, builder: (context) => alert);
 }
