@@ -11,3 +11,7 @@ Import file text_widget.dart ke main.dart
 tambahkan file logo Polinema di folder assets project hello_world.
 
 ![Screenshot hello_world](images/03.png)
+
+Praktikum Langkah 1: Cupertino Button dan Loading Bar
+
+![Screenshot hello_world](images/04.png)
