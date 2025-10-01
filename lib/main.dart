@@ -1,19 +1,69 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Contoh TextField")),
-        body: const TextField(
-          obscureText: false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Nama',
-          ),
+    return const MaterialApp(
+      title: 'Contoh Date Picker',
+      home: MyHomePage(title: 'Contoh Date Picker'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // State untuk menyimpan tanggal yang dipilih
+  DateTime selectedDate = DateTime.now();
+
+  // Fungsi untuk menampilkan date picker
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text("${selectedDate.toLocal()}".split(' ')[0]),
+            const SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                _selectDate(context);
+                // ignore: avoid_print
+                print(
+                  selectedDate.day + selectedDate.month + selectedDate.year,
+                );
+              },
+              child: const Text('Pilih Tanggal'),
+            ),
+          ],
         ),
       ),
     );

@@ -31,3 +31,7 @@ Langkah 4: Dialog Widget
 Langkah 5: Input dan Selection Widget
 
 ![Screenshot hello_world](images/08.png)
+
+Langkah 6: Date and Time Pickers
+
+![Screenshot hello_world](images/09.png)
